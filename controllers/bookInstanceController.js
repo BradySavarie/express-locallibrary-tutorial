@@ -26,7 +26,7 @@ exports.bookinstance_detail = asyncHandler(async (req, res, next) => {
         return next(err);
     }
 
-    res.render('bookinstance_detail', {
+    res.render('bookInstance_detail', {
         title: 'Book:',
         bookinstance: bookInstance,
     });
@@ -73,7 +73,7 @@ exports.bookinstance_create_post = [
             const allBooks = await Book.find({}, 'title').exec();
 
             res.render('bookInstance_form', {
-                title: 'Create BookInstance',
+                title: 'Create Book Instance',
                 book_list: allBooks,
                 selected_book: bookInstance.book._id,
                 errors: errors.array(),
