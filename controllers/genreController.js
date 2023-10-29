@@ -5,12 +5,10 @@ const { body, validationResult } = require('express-validator');
 
 exports.genre_list = asyncHandler(async (req, res, next) => {
     const allGenres = await Genre.find({}).sort({ name: 1 }).exec();
-    console.log(allGenres);
     res.render('genre_list', { title: 'Genre List', genre_list: allGenres });
 });
 
 exports.genre_detail = asyncHandler(async (req, res, next) => {
-    console.log(req.params.id);
     const [genre, booksInGenre] = await Promise.all([
         Genre.findById(req.params.id).exec(),
         Book.find({ genre: req.params.id }, 'title summary').exec(),

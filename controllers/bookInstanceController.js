@@ -5,7 +5,6 @@ const { body, validationResult } = require('express-validator');
 
 exports.bookinstance_list = asyncHandler(async (req, res, next) => {
     const allBookInstances = await BookInstance.find().populate('book').exec();
-    console.log(allBookInstances);
 
     res.render('bookInstance_list', {
         title: 'Book Instance List',
